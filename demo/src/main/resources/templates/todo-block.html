@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body>
+
+
+<div th:fragment="card">
+    <!--    <div class="card" style="width: 18rem;">-->
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="card-text">[[${todo.content}]]</p>
+                    <p class="card-text">期限: [[${todo.deadLine}]] </p>
+                    <p class="card-text">作成日: [[${todo.created}]]</p>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success editTodo" th:id="|editTodo${todo.id}|" th:value="${todo.id}">編集</button>
+                </div>
+                <div class="col-md-2">
+                    <div th:if="${todo.isFinish}">
+                        <button type="button" class="btn btn-primary complete" th:id="|complete${todo.id}|" th:value="${todo.id}">完了</button>
+                        <button style="display:none" type="button" class="btn btn-danger incomplete" th:id="|incomplete${todo.id}|" th:value="${todo.id}">未完了</button>
+                    </div>
+                    <div th:if="${!todo.isFinish}">
+                        <button style="display:none" type="button" class="btn btn-primary complete" th:id="|complete${todo.id}|" th:value="${todo.id}">完了</button>
+                        <button type="button" class="btn btn-danger incomplete" th:id="|incomplete${todo.id}|" th:value="${todo.id}">未完了</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
+
+

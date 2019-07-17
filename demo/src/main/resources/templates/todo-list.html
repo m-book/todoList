@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body>
+    <div th:fragment="todoListBody">
+    <div th:if="${flag}">
+        <div th:each="todo:${todos}" th:object="${todo}">
+            <div th:replace="~{/todo-block.html :: card}"></div>
+        </div>
+    </div>
+    <div th:if="${!flag}">
+        <p>登録されたToDoはございません</p>
+    </div>
+</div>
+</body>
+</html>
+
+
